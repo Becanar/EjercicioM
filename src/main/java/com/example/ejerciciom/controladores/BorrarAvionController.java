@@ -68,6 +68,8 @@ public class BorrarAvionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btGuardar.setDefaultButton(true);
+        btCancelar.setCancelButton(true);
         ObservableList<Aeropuerto> aeropuertos = aeropuertoDao.cargarListado();
         comboAeropuerto.setItems(aeropuertos);
         comboAeropuerto.getSelectionModel().select(0);

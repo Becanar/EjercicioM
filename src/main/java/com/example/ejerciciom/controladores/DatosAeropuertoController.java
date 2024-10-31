@@ -143,6 +143,8 @@ public class DatosAeropuertoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btGuardar.setDefaultButton(true);
+        btCancelar.setCancelButton(true);
         rbTipo.selectedToggleProperty().addListener(this::cambioTipo);
 
         if (aeropuerto == null) {

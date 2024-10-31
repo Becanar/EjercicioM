@@ -79,7 +79,6 @@ public class aeropuertosControler implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         tablaVista.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
             @Override
             public void changed(ObservableValue<? extends Object> observableValue, Object oldValue, Object newValue) {
