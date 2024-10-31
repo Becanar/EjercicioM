@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -36,6 +37,12 @@ public class DatosAeropuertoController implements Initializable {
 
     @FXML
     private Button btGuardar;
+
+    @FXML
+    private Button btImg;
+
+    @FXML
+    private ImageView imageView;
 
     @FXML
     private RadioButton btPrivado;
@@ -440,5 +447,8 @@ public class DatosAeropuertoController implements Initializable {
         alerta.setTitle("Info");
         alerta.setContentText(contenido);
         alerta.showAndWait();
+    }
+
+    public void elegirImg(ActionEvent actionEvent) {
     }
 }
