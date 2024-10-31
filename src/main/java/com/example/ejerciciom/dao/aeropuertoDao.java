@@ -6,11 +6,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import com.example.ejerciciom.model.Aeropuerto;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.*;
+import java.sql.Blob;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * La clase {@code aeropuertoDao} proporciona métodos para realizar operaciones
@@ -186,24 +186,4 @@ public class aeropuertoDao {
             throw new RuntimeException(e);
         }
     }
-
-    public static Blob convertFileToBlob(File file) throws SQLException, IOException {
-        ConectorDB connection = new ConectorDB();
-        try (Connection conn = connection.getConnection();
-             FileInputStream inputStream = new FileInputStream(file)) {
-
-
-            Blob blob = conn.createBlob();
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-
-            try (var outputStream = blob.setBinaryStream(1)) {
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
-                }
-            }
-            return blob;
-        }
-    }
-
 }
