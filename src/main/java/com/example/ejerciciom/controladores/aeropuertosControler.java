@@ -19,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
@@ -95,6 +97,12 @@ public class aeropuertosControler implements Initializable{
                 cargarPublicos();
             } else {
                 cargarPrivados();
+            }
+        });
+        rootPane.setOnKeyPressed(event -> {
+            if (event.isControlDown() && event.getCode() == KeyCode.F) {
+                txtNombre.requestFocus();
+                event.consume();
             }
         });
         txtNombre.setOnKeyTyped(keyEvent -> filtrar());
@@ -540,10 +548,10 @@ public class aeropuertosControler implements Initializable{
      */
     public void filtrar() {
         String valor = txtNombre.getText();
-        valor = valor.toLowerCase();
-        if (valor.isEmpty()) {
+        if (valor==null) {
             tablaVista.setItems(lstEntera);
         } else {
+            valor = valor.toLowerCase();
             lstFiltrada.clear();
             if (lstEntera.getFirst() instanceof AeropuertoPublico) {
                 for (Object aeropuerto : lstEntera) {
