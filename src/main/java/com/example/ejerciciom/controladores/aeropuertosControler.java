@@ -131,6 +131,8 @@ public class aeropuertosControler implements Initializable{
         try {
             Window ventana = btPrivados.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/ejerciciom/fxml/DatosAeropuerto.fxml"));
+            DatosAeropuertoController controlador = new DatosAeropuertoController();
+            fxmlLoader.setController(controlador);
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -175,6 +177,8 @@ public class aeropuertosControler implements Initializable{
             try {
                 Window ventana = btPrivados.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/ejerciciom/fxml/DatosAeropuerto.fxml"));
+                DatosAeropuertoController controlador = new DatosAeropuertoController(aeropuerto);
+                fxmlLoader.setController(controlador);
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = new Stage();
                 stage.setScene(scene);

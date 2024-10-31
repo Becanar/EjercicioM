@@ -1,5 +1,6 @@
 package com.example.ejerciciom.model;
 
+import java.io.InputStream;
 import java.sql.Blob;
 import java.util.Objects;
 

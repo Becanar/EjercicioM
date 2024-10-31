@@ -1,8 +1,7 @@
 module com.example.ejerciciol {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.base;
-    requires java.sql;
+    requires java.sql.rowset;
 
 
     exports com.example.ejerciciom.app;

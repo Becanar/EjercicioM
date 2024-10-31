@@ -13,13 +13,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.*;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -42,7 +47,7 @@ public class DatosAeropuertoController implements Initializable {
     private Button btImg;
 
     @FXML
-    private ImageView imageView;
+    private ImageView imgView;
 
     @FXML
     private RadioButton btPrivado;
@@ -118,6 +123,7 @@ public class DatosAeropuertoController implements Initializable {
 
     @FXML
     private TextField txtPais;
+    private Blob imagenBlob; // Cambia InputStream a Blob
 
     /**
      * Constructor que inicializa el controlador con un objeto aeropuerto.
@@ -181,7 +187,19 @@ public class DatosAeropuertoController implements Initializable {
             txtNumero.setText(airport.getDireccion().getNumero() + "");
             txtAnio.setText(airport.getAnio_inauguracion() + "");
             txtCapacidad.setText(airport.getCapacidad() + "");
+            if (airport.getImagen() != null) {
+                System.out.println("Has image");
+                this.imagenBlob = airport.getImagen();
+                InputStream imagen = null;
+                try {
+                    imagen = airport.getImagen().getBinaryStream();
+                    imgView.setImage(new Image(imagen));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
+
     }
 
     /**
@@ -300,7 +318,7 @@ public class DatosAeropuertoController implements Initializable {
             airport.setDireccion(direccion);
             airport.setAnio_inauguracion(Integer.parseInt(txtAnio.getText()));
             airport.setCapacidad(Integer.parseInt(txtCapacidad.getText()));
-            airport.setImagen(null);
+            airport.setImagen(imagenBlob);
             int id_aeropuerto = aeropuertoDao.insertar(airport);
             if (id_aeropuerto == -1) {
                 ArrayList<String> lst = new ArrayList<>();
@@ -357,7 +375,7 @@ public class DatosAeropuertoController implements Initializable {
             airport.setNombre(txtNombre.getText());
             airport.setAnio_inauguracion(Integer.parseInt(txtAnio.getText()));
             airport.setCapacidad(Integer.parseInt(txtCapacidad.getText()));
-            airport.setImagen(null);
+            airport.setImagen(imagenBlob);
             if (!aeropuertoDao.modificar(ap, airport)) {
                 ArrayList<String> lst = new ArrayList<>();
                 lst.add("No se han podido cargar los datos.");
@@ -448,7 +466,27 @@ public class DatosAeropuertoController implements Initializable {
         alerta.setContentText(contenido);
         alerta.showAndWait();
     }
-
+    @FXML
     public void elegirImg(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar Imagen del Aeropuerto");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.gif")
+        );
+
+        File file = fileChooser.showOpenDialog(null); // Cambia null por la ventana principal si es necesario
+        if (file != null) {
+            try {
+                InputStream imagen = new FileInputStream(file);
+                Blob blob = aeropuertoDao.convertFileToBlob(file);
+                this.imagenBlob = blob;
+                imgView.setImage(new Image(imagen));
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
+
 }
