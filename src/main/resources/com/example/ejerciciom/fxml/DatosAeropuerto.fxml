@@ -6,14 +6,13 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="rootPane" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ejerciciom.controladores.DatosAeropuertoController">
+<GridPane fx:id="rootPane" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ejerciciol.controladores.DatosAeropuertoController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="250.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="365.5" minWidth="10.0" prefWidth="350.5" />
@@ -28,8 +27,6 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="136.79999999999995" minHeight="10.0" prefHeight="136.79999999999995" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="49.99997558593748" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -66,7 +63,7 @@
       <TextField fx:id="txtAnio" alignment="CENTER_RIGHT" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <Label fx:id="lblCapacidad" text="Capacidad:" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
       <TextField fx:id="txtCapacidad" alignment="CENTER_RIGHT" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-       <FlowPane fx:id="panelRB" alignment="CENTER" hgap="25.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="10">
+      <FlowPane fx:id="panelRB" alignment="CENTER" hgap="25.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="8">
          <children>
             <RadioButton fx:id="btPublico" mnemonicParsing="false" selected="true" text="Público">
                <toggleGroup>
@@ -76,18 +73,16 @@
             <RadioButton fx:id="btPrivado" mnemonicParsing="false" text="Privado" toggleGroup="$rbTipo" />
          </children>
       </FlowPane>
-      <Label fx:id="lblFinanciacion" text="Financiación:" GridPane.halignment="RIGHT" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
-      <TextField fx:id="txtFInanciacion" alignment="CENTER_RIGHT" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-      <Label fx:id="lblNumTrab" text="Número de trabajadores:" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
-      <TextField fx:id="txtNumTrab" alignment="CENTER_RIGHT" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-      <FlowPane fx:id="panelBotones" alignment="CENTER" hgap="100.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="13">
+      <Label fx:id="lblFinanciacion" text="Financiación:" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+      <TextField fx:id="txtFInanciacion" alignment="CENTER_RIGHT" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <Label fx:id="lblNumTrab" text="Número de trabajadores:" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+      <TextField fx:id="txtNumTrab" alignment="CENTER_RIGHT" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+      <FlowPane fx:id="panelBotones" alignment="CENTER" hgap="100.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="11">
          <children>
             <Button fx:id="btGuardar" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
             <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
          </children>
       </FlowPane>
-      <Button fx:id="btImg" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="Seleccionar Imagen" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-       <ImageView fx:id="imgAeropuerto" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

@@ -192,18 +192,18 @@ public class aeropuertoDao {
         try (Connection conn = connection.getConnection();
              FileInputStream inputStream = new FileInputStream(file)) {
 
-
-            Blob blob = conn.createBlob();
+            Blob blob = conn.createBlob(); // Crear un nuevo Blob
             byte[] buffer = new byte[1024];
             int bytesRead;
 
             try (var outputStream = blob.setBinaryStream(1)) {
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
+                    outputStream.write(buffer, 0, bytesRead); // Escribir los bytes leídos en el Blob
                 }
             }
-            return blob;
+            return blob; // Retornar el Blob creado
         }
     }
+
 
 }
