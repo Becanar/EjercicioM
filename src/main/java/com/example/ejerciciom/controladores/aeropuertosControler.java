@@ -91,6 +91,18 @@ public class aeropuertosControler implements Initializable{
             }
         });
         cargarPublicos();
+        ContextMenu contextMenu = new ContextMenu();
+
+        MenuItem editItem = new MenuItem("Editar Aeropuerto");
+        editItem.setOnAction(event -> editarAeropuerto(null));
+
+
+        MenuItem deleteItem = new MenuItem("Borrar Aeropuerto");
+        deleteItem.setOnAction(event -> borrarAeropuerto(null));
+
+        contextMenu.getItems().addAll(editItem, deleteItem);
+
+        tablaVista.setContextMenu(contextMenu);
         tablaVista.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
                 infoAeropuerto(null);
