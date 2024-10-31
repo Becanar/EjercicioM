@@ -8,9 +8,13 @@
     -fx-background-color: #006600; /* verde oscuro */
     -fx-text-fill: white;           /* texto blanco para contraste */
     -fx-font-weight: bold;
-    -fx-padding: 8px 15px;
+    -fx-padding: 8px;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
+    -fx-pref-width: -1;
+    -fx-pref-height: -1;
+    -fx-min-width: 0;
+        -fx-min-height: 0;
 }
 
 /* Estilo para los botones al pasar el cursor */
