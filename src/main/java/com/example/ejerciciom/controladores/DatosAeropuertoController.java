@@ -191,15 +191,13 @@ public class DatosAeropuertoController implements Initializable {
             txtCapacidad.setText(airport.getCapacidad() + "");
             if (airport.getImagen() != null) {
                 this.blobimg = airport.getImagen();
+                InputStream imagen = null;
                 try {
-                    InputStream imagen = airport.getImagen().getBinaryStream(); // Obtener el InputStream del Blob
-                    imgAeropuerto.setImage(new Image(imagen)); // Establecer la imagen en el ImageView
+                    imagen = airport.getImagen().getBinaryStream();
+                    imgAeropuerto.setImage(new Image(imagen));
                 } catch (SQLException e) {
-                    e.printStackTrace(); // Manejo de errores de SQL
+                    throw new RuntimeException(e);
                 }
-            } else {
-                // Manejar el caso en que no hay imagen
-                imgAeropuerto.setImage(null); // O establecer una imagen por defecto
             }
         }
     }
@@ -496,29 +494,17 @@ public class DatosAeropuertoController implements Initializable {
     public void seleccionarImagen(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Selecciona una imagen de aeropuerto");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files","*.jpg","*.png"));
         File file = fileChooser.showOpenDialog(null);
-
-        // Verifica si se seleccionó un archivo
-        if (file != null) {
-            try {
-                // Convertir el archivo a Blob
-                Blob blob = aeropuertoDao.convertFileToBlob(file);
-                this.blobimg = blob;
-
-                // Cargar la imagen en el ImageView
-                try (InputStream imagen = new FileInputStream(file)) {
-                    imgAeropuerto.setImage(new Image(imagen));
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace(); // Manejo de errores de I/O
-            } catch (SQLException e) {
-                e.printStackTrace(); // Manejo de errores de SQL
-            }
-        } else {
-            System.out.println("No se seleccionó ningún archivo.");
+        try {
+            InputStream imagen = new FileInputStream(file);
+            Blob blob = aeropuertoDao.convertFileToBlob(file);
+            this.blobimg = blob;
+            imgAeropuerto.setImage(new Image(imagen));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
-
 }
