@@ -5,6 +5,7 @@ import com.example.ejerciciom.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -15,12 +16,14 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 /**
  * Clase que se encarga de controlar el login
  */
-public class loginController {
+public class loginController implements Initializable {
 
     @FXML
     private Button btLogin;
@@ -39,6 +42,12 @@ public class loginController {
 
     @FXML
     private TextField txtUsuario;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btLogin.setDefaultButton(true);
+    }
 
     /**
      * Maneja el evento de inicio de sesión cuando el usuario presiona el botón de login.
@@ -115,4 +124,5 @@ public class loginController {
         alert.setContentText(error);
         alert.showAndWait();
     }
+
 }
