@@ -466,6 +466,19 @@ public class DatosAeropuertoController implements Initializable {
         alerta.setContentText(contenido);
         alerta.showAndWait();
     }
+    /**
+     * Abre un cuadro de diálogo de selección de archivos para que el usuario pueda elegir
+     * una imagen y convierte la imagen seleccionada en un objeto Blob para almacenarla en
+     * la base de datos.
+     *
+     * <p>Este método utiliza {@link FileChooser} para abrir un explorador de archivos que
+     * permite seleccionar archivos de imagen en formato PNG, JPG o GIF. Si el usuario selecciona
+     * un archivo válido, este se convierte en un Blob y se almacena en el atributo `imagenBlob`.
+     * Además, muestra la imagen seleccionada en el componente {@code imgView}.</p>
+     *
+     * @param actionEvent el evento que dispara la selección de imagen.
+     * @throws RuntimeException si ocurre un error de SQL al convertir la imagen en un Blob.
+     */
     @FXML
     public void elegirImg(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();

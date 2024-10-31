@@ -183,7 +183,20 @@ public class aeropuertoDao {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * Convierte un archivo en un objeto Blob para almacenarlo en una base de datos.
+     *
+     * <p>Este método lee los datos de un archivo y los convierte en un Blob mediante
+     * un flujo de bytes. El Blob resultante puede utilizarse para almacenar datos binarios
+     * en la base de datos. La conexión a la base de datos se gestiona a través de
+     * la clase ConectorDB.</p>
+     *
+     * @param file el archivo que se desea convertir en un Blob.
+     * @return un objeto Blob que contiene los datos binarios del archivo proporcionado.
+     * @throws SQLException si ocurre un error al crear el Blob o con la conexión a la base de datos.
+     * @throws FileNotFoundException si el archivo especificado no se encuentra o no se puede abrir.
+     * @throws RuntimeException si ocurre un error de entrada/salida al leer el archivo.
+     */
     public static Blob convertFileToBlob(File file) throws SQLException, FileNotFoundException {
         ConectorDB connection = new ConectorDB();
         try (Connection conn = connection.getConnection();
