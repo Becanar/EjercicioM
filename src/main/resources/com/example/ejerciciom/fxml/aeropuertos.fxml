@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ejerciciom.controladores.aeropuertosControler">
+   <children>
+      <MenuBar fx:id="barraMenu" maxWidth="1.7976931348623157E308">
+         <menus>
+            <Menu fx:id="menuAeropuertos" mnemonicParsing="false" text="Aeropuertos">
+               <items>
+                  <MenuItem fx:id="aniadirAeropuerto" mnemonicParsing="false" onAction="#aniadirAeropuerto" text="Añadir…" />
+                  <MenuItem fx:id="editarAeropuerto" disable="true" mnemonicParsing="false" onAction="#editarAeropuerto" text="Editar…" />
+                  <MenuItem fx:id="borrarAeropuerto" disable="true" mnemonicParsing="false" onAction="#borrarAeropuerto" text="Borrar" />
+                  <MenuItem fx:id="infoAeropuerto" disable="true" mnemonicParsing="false" onAction="#infoAeropuerto" text="Mostrar información" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuAviones" mnemonicParsing="false" text="Aviones">
+               <items>
+                  <MenuItem fx:id="aniadirAvion" mnemonicParsing="false" onAction="#aniadirAvion" text="Añadir…" />
+                  <MenuItem fx:id="actDesAvion" mnemonicParsing="false" onAction="#activarDesactivarAvion" text="Activar / desactivar" />
+                  <MenuItem fx:id="borrarAvion" mnemonicParsing="false" onAction="#borrarAvion" text="Borrar" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuAyuda" mnemonicParsing="false" text="Ayuda" />
+         </menus>
+      </MenuBar>
+      <FlowPane fx:id="panelListado" alignment="CENTER" prefWidth="200.0">
+         <children>
+            <Label fx:id="lblListado" text="LISTADO DE AEROPUERTOS" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" top="20.0" />
+         </VBox.margin>
+      </FlowPane>
+      <TilePane fx:id="panelCentro" alignment="CENTER" maxWidth="1.7976931348623157E308" prefColumns="3" prefRows="1">
+         <children>
+            <HBox fx:id="panelBotones" alignment="CENTER" maxWidth="1.7976931348623157E308">
+               <children>
+                  <RadioButton fx:id="btPublicos" mnemonicParsing="false" selected="true" text="Públicos">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="rbGroup" />
+                     </toggleGroup>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </RadioButton>
+                  <RadioButton fx:id="btPrivados" mnemonicParsing="false" text="Privados" toggleGroup="$rbGroup">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </RadioButton>
+               </children>
+            </HBox>
+            <HBox fx:id="panelHueco" prefWidth="200.0" />
+            <HBox alignment="CENTER" maxWidth="1.7976931348623157E308">
+               <children>
+                  <Label fx:id="lblNombre" text="Nombre:">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtNombre">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </TilePane>
+      <TableView fx:id="tablaVista">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TableView>
+   </children>
+</VBox>

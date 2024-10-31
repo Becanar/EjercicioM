@@ -1,8 +1,13 @@
-module com.example.ejerciciom {
+module com.example.ejerciciol {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.base;
+    requires java.sql;
 
 
-    opens com.example.ejerciciom to javafx.fxml;
-    exports com.example.ejerciciom;
+    exports com.example.ejerciciom.app;
+    opens com.example.ejerciciom.model to javafx.base;
+    opens com.example.ejerciciom.app to javafx.fxml;
+    exports com.example.ejerciciom.controladores;
+    opens com.example.ejerciciom.controladores to javafx.fxml;
 }
