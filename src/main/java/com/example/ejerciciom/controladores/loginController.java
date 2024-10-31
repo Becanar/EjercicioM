@@ -81,6 +81,7 @@ public class loginController {
                             lst.add("Error al cargar la imagen.");
                             error(lst);
                         }
+                        scene.getStylesheets().add(getClass().getResource("/com/example/ejerciciom/estilo/style.css").toExternalForm());
                         stage.setTitle("AVIONES - AEROPUERTOS");
                         stage.show();
                         Stage esta = (Stage) txtUsuario.getScene().getWindow();

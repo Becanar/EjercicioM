@@ -27,7 +27,7 @@ public class App extends Application {
         } catch (Exception e) {
             System.out.println("Error al cargar la imagen: " + e.getMessage());
         }
-
+        scene.getStylesheets().add(getClass().getResource("/com/example/ejerciciom/estilo/style.css").toExternalForm());
         stage.setTitle("AVIONES-LOGIN");
         stage.setScene(scene);
         stage.show();

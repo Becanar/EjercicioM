@@ -119,6 +119,7 @@ public class aeropuertosControler implements Initializable{
                 lst.add("No se ha podido cargar la imagen.");
                 alerta(lst);
             }
+            scene.getStylesheets().add(getClass().getResource("/com/example/ejerciciom/estilo/style.css").toExternalForm());
             stage.setTitle("AVIONES - AÑADIR AEROPUERTO");
             stage.initOwner(ventana);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -162,6 +163,7 @@ public class aeropuertosControler implements Initializable{
                     lst.add("No se ha podido cargar la imagen.");
                     alerta(lst);
                 }
+                scene.getStylesheets().add(getClass().getResource("/com/example/ejerciciom/estilo/style.css").toExternalForm());
                 stage.setTitle("AVIONES - EDITAR AEROPUERTO");
                 stage.initOwner(ventana);
                 stage.initModality(Modality.APPLICATION_MODAL);
@@ -347,6 +349,7 @@ public class aeropuertosControler implements Initializable{
                 lst.add("No se ha podido cargar la imagen.");
                 alerta(lst);
             }
+            scene.getStylesheets().add(getClass().getResource("/com/example/ejerciciom/estilo/style.css").toExternalForm());
             stage.setTitle("AVIONES - AÑADIR AVIÓN");
             stage.initOwner(ventana);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -379,6 +382,7 @@ public class aeropuertosControler implements Initializable{
                 lst.add("No se ha podido cargar la imagen.");
                 alerta(lst);
             }
+            scene.getStylesheets().add(getClass().getResource("/com/example/ejerciciom/estilo/style.css").toExternalForm());
             stage.setTitle("AVIONES - ACTIVAR/DESACTIVAR AVIÓN");
             stage.initOwner(ventana);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -411,6 +415,7 @@ public class aeropuertosControler implements Initializable{
                 lst.add("No se ha podido cargar la imagen.");
                 alerta(lst);
             }
+            scene.getStylesheets().add(getClass().getResource("/com/example/ejerciciom/estilo/style.css").toExternalForm());
             stage.setTitle("AVIONES - BORRAR AVIÓN");
             stage.initOwner(ventana);
             stage.initModality(Modality.APPLICATION_MODAL);
