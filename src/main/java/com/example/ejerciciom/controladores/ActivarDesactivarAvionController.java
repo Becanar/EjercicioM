@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -86,6 +87,12 @@ public class ActivarDesactivarAvionController implements Initializable {
         cambioAvion(comboAvion.getSelectionModel().getSelectedItem());
 
         comboAvion.valueProperty().addListener((observableValue, oldValue, newValue) -> cambioAvion(newValue));
+        rootPane.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+            if (keyEvent.getCode().toString().equals("ENTER")) {
+                guardar(null);
+                keyEvent.consume();
+            }
+        });
     }
 
     /**
