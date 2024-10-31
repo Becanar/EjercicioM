@@ -91,7 +91,11 @@ public class aeropuertosControler implements Initializable{
             }
         });
         cargarPublicos();
-
+        tablaVista.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                infoAeropuerto(null);
+            }
+        });
         rbGroup.selectedToggleProperty().addListener((ObservableValue<? extends Toggle> observable, Toggle oldBtn, Toggle newBtn) -> {
             if (newBtn.equals(btPublicos)) {
                 cargarPublicos();
